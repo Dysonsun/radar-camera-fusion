@@ -1,0 +1,18 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/home/sundong/bit_ivrc/Radar-Camera-Fusion/Dataset/nuscenes2bag/devel_isolated/nuscenes2bag/include/**",
+        "/opt/ros/kinetic/include/**",
+        "/home/sundong/bit_ivrc/Radar-Camera-Fusion/Dataset/nuscenes2bag/src/nuscenes2bag_cpp/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS"
+    }
+  ],
+  "version": 4
+}

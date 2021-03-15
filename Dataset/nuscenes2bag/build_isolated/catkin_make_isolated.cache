@@ -1,0 +1,2 @@
+nuscenes2bag_cpp
+-G Ninja -DCATKIN_DEVEL_PREFIX=/home/sundong/bit_ivrc/Radar-Camera-Fusion/Dataset/nuscenes2bag/devel_isolated -DCMAKE_INSTALL_PREFIX=/home/sundong/bit_ivrc/Radar-Camera-Fusion/Dataset/nuscenes2bag/install_isolated

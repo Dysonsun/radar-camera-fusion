@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    <param name="/use_sim_time" value="true" />
+
+    <arg name = "bag_filename" default = "/home/sundong/bit_ivrc/Radar-Camera-Fusion/Dataset/61.bag"/>
+    <arg name = "play_rosbag" default = "1"/>
+    <arg name = "test_radar" default = "1"/>
+
+
+    <group if="$(arg test_radar)">
+        <node name="playbag" pkg="rosbag" type="play" args="--clock $(arg bag_filename)" >
+        </node>
+    </group>
+    
+
+    <group if="$(arg play_rosbag)">
+        <node name="test_radar_node" pkg="radar_camera_fusion" type="test_radar_node" 
+        args="--logtostderr=0  --colorlogtostderr=1 --stderrthreshold=2 " output="screen">
+        </node>
+    </group>
+</launch>

@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/sundong/bit_ivrc/Radar-Camera-Fusion/src/radar_camera_fusion/cmake-build-debug/devel/setup.sh

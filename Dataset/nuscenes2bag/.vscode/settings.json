@@ -1,0 +1,6 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/sundong/bit_ivrc/Radar-Camera-Fusion/Dataset/nuscenes2bag/devel_isolated/nuscenes2bag/lib/python2.7/dist-packages",
+        "/opt/ros/kinetic/lib/python2.7/dist-packages"
+    ]
+}

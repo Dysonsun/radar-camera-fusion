@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/sundong/bit_ivrc/Radar-Camera-Fusion/Dataset/nuscenes2bag/install_isolated/setup.sh

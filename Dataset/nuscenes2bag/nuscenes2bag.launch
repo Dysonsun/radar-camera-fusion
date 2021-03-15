@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+    <arg name = "scene_number" default = "0061"/>
+    <arg name = "dataroot" default = "/media/sundong/Elements/ubuntu/Dataset/nuscenes/v1.0-mini"/>
+    <arg name = "out" default = "/home/sundong/bit_ivrc/Radar-Camera-Fusion/Dataset/"/>
+    <arg name = "jobs" default = "4"/>
+
+
+    <node pkg="nuscenes2bag" type="nuscenes2bag" name="nuscenes2bag" 
+    args=" --scene_number $(arg scene_number) --dataroot $(arg dataroot) --out $(arg out) --jobs $(arg jobs) " output="screen">
+    
+    </node>
+
+</launch>
