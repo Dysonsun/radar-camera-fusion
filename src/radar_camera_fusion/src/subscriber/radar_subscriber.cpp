@@ -20,7 +20,7 @@ namespace radar_camera_fusion{
         radar_objects.time = radar_msg_ptr->header.stamp.toSec();
         int index = 0;
         for(int i = 0; i < radar_msg_ptr->objects.size(); i++){
-            if(radar_msg_ptr->objects[i].rcs < 0.01){
+            if(radar_msg_ptr->objects[i].dyn_prop != 0 || radar_msg_ptr->objects[i].invalid_state == false){
 //                std::cout << radar_msg_ptr->objects[i].rcs << std::endl;
                 continue;
             }

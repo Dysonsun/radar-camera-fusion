@@ -13,8 +13,12 @@
 #include <pcl/visualization/boost.h>
 #include <pcl/visualization/pcl_visualizer.h>
 #include <pcl/point_cloud.h>
+#include <Eigen/Dense>
+
 
 #include "radar_camera_fusion/sensor_data/radar_data.hpp"
+#include "radar_camera_fusion/sensor_data/camera_data.hpp"
+#include "radar_camera_fusion/common/rigid_transform.h"
 
 namespace radar_camera_fusion{
     class Visualizer{
@@ -22,6 +26,10 @@ namespace radar_camera_fusion{
     public:
         Visualizer();
         void DisplayPC(RadarData& radar_data);
+        void DisplayRadarinImage(const RadarData& radar_data,
+                                 const CameraData& imge_data,
+                                 const transform::Rigid3d& exstrinsic_matrix,
+                                 const Eigen::Matrix3d& instrinsic_matirx);
 
     private:
         void Radardata2PC(RadarData& radar_data_in,

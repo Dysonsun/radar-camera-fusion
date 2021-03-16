@@ -5,6 +5,7 @@
 
 #include <boost/thread/thread.hpp>
 #include <opencv2/core/core.hpp>
+#include <opencv2/opencv.hpp>
 #include "radar_camera_fusion/tools/visualizer.hpp"
 
 
@@ -50,7 +51,35 @@ namespace radar_camera_fusion{
 //            std::cout << "cloud pos: " << point.x << " " << point.y << " " << point.z << std::endl;
         }
         viewer_mutex_.unlock();
+    }
 
+    void Visualizer::DisplayRadarinImage(const RadarData &radar_data,
+                                         const CameraData &imge_data,
+                                         const transform::Rigid3d& exstrinsic_matrix,
+                                         const Eigen::Matrix3d& instrinsic_matirx) {
+        cv::Mat image_clip;
+        cv::resize(imge_data.image, image_clip, cv::Size(1280, 960));
+
+        Eigen::Vector3d point_radar;
+        Eigen::Vector3d point_camera;
+        Eigen::Vector3d point_image;
+
+        int u, v;
+        for(unsigned i = 0; i < radar_data.radar_objects.size(); i++){
+            point_radar << radar_data.radar_objects[i].pose.x * 100,
+                           radar_data.radar_objects[i].pose.y * 100,
+                           radar_data.radar_objects[i].pose.z * 100;
+            point_camera = exstrinsic_matrix * point_radar;
+            point_image = instrinsic_matirx * point_camera;
+
+            u = static_cast<int>(point_image[0]/point_image[2]);
+            v = static_cast<int>(point_image[1]/point_image[2]);
+            cv::circle(image_clip, cv::Point(u, v), 3, cv::Scalar(255, 0, 0), -1);
+        }
+
+        cv::resize(image_clip, image_clip, cv::Size(960, 640));
+        cv::imshow("Radar Point in Image", image_clip);
+        cv::waitKey(1);
 
     }
 }
